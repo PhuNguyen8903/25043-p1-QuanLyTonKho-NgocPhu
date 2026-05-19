@@ -1,12 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMP Store</title>
-    <link rel="stylesheet" href="style.css">
+    <title>SMP store</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./js/main.js"></script>
 </head>
+
 <body>
-    <h1>HEllo day la trang chinh</h1>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="brand">
+                    <img src="./assets/images/logo.png" alt="logo" class="logo">
+                    <h2>SMP Store</h2>
+                </div>
+                <nav class="nav-links">
+                    <a href="#" class="nav-item"> Đơn mua hàng</a>
+                    <a href="#" class="nav-item"> Sản phẩm </a>
+                    <a href="#" class="nav-item"> Nhà cung cấp </a>
+                    <a href="#" class="nav-item"> Tồn kho</a>
+                </nav>
+            </div>
+        </aside>
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>Danh sách Đơn mua hàng</h1>
+                    <p>Quản lý đơn mua hàng và tồn kho </p>
+                </div>
+                <div class="user-box">
+                    <div class="user-info">
+                        <span class="user-name">Admin</span>
+                        <span class="user-role">Administrator </span>
+                    </div>
+                    <button class="logout-btn">Logout </button>
+                </div>
+            </header>
+            <section class="filter-section">
+                <div class="filter-group">
+                    <input type="text" placeholder="Mã đơn hàng">
+                    <input type="text" placeholder="Tên nhà cung cấp">
+                    <button class="search-btn">Tìm kiếm</button>
+                </div>
+                <button class="create-btn">Tạo mới</button>
+            </section>
+            <section class="table-section">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mã đơn</th>
+                            <th>Nhà cung cấp</th>
+                            <th>Ngày mua</th>
+                            <th>Nhân viên</th>
+                            <th>Tổng tiền</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PO001</td>
+                            <td>Samsung VN</td>
+                            <td>19/05/2026</td>
+                            <td>Phú</td>
+                            <td>25,000,000đ</td>
+                            <td>
+                                <span class="status draft">
+                                    Bản nháp
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
 </body>
+
 </html>

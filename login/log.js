@@ -1,5 +1,6 @@
 import { Users} from '../js/mock-data.js';
 
+//neu user chua co tren local storage thi set item de lay du lieu
 if (!localStorage.getItem('Users')) {
     localStorage.setItem('Users',JSON.stringify(Users));
 }
