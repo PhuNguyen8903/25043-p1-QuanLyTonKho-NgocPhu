@@ -7,6 +7,7 @@
     <title>SMP store</title>
     <link rel="stylesheet" href="./style.css">
     <script src="./js/main.js"></script>
+    <script type="module" src="./js/mock-data.js"></script>
 </head>
 
 <body>
@@ -18,10 +19,12 @@
                     <h2>SMP Store</h2>
                 </div>
                 <nav class="nav-links">
-                    <a href="#" class="nav-item"> Đơn mua hàng</a>
+                    <a href="/index.html" class="nav-item"> Đơn mua hàng</a>
+                    <a href="/index.html" class="nav-item"> Đơn bán hàng</a>
                     <a href="#" class="nav-item"> Sản phẩm </a>
                     <a href="#" class="nav-item"> Nhà cung cấp </a>
                     <a href="#" class="nav-item"> Tồn kho</a>
+                    <a href="#" class="nav-item"> Profile</a>
                 </nav>
             </div>
         </aside>
@@ -33,8 +36,8 @@
                 </div>
                 <div class="user-box">
                     <div class="user-info">
-                        <span class="user-name">Admin</span>
-                        <span class="user-role">Administrator </span>
+                        <span class="user-name"></span>
+                        <span class="user-role"></span>
                     </div>
                     <button class="logout-btn">Logout </button>
                 </div>
@@ -59,24 +62,59 @@
                             <th>Trạng thái</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="purchase-order-list">
                         <tr>
-                            <td>PO001</td>
-                            <td>Samsung VN</td>
-                            <td>19/05/2026</td>
-                            <td>Phú</td>
-                            <td>25,000,000đ</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td>
-                                <span class="status draft">
-                                    Bản nháp
+                                <span class="status">
                                 </span>
                             </td>
                         </tr>
                     </tbody>
+                    <script>
+                        //lấy orders 
+                        const orders = JSON.parse(localStorage.getItem("ImportOrders")) || [];
+                        const tbody = document.getElementById("purchase-order-list");
+                        if (!orders) {
+                            tbody.innerHTML = `<p>no purchases founded!!</p>`;
+                        } else {
+                            tbody.innerHTML = "";
+                            orders.forEach(order => {
+                                tbody.innerHTML += `
+                                <tr>
+
+                                    <td>${order.Id}</td>
+
+                                    <td>${order.supplierId}</td>
+
+                                    <td>${order.create_at}</td>
+
+                                    <td>${order.create_by}</td>
+
+                                    <td>
+                                        ${order.cost.toLocaleString("vi-VN")}đ
+                                    </td>
+
+                                    <td>
+                                        <span class="status">
+                                            ${order.status}
+                                        </span>
+                                    </td>
+
+                                </tr>`;
+                            });
+                        }
+
+                    </script>
                 </table>
             </section>
         </main>
     </div>
+    <script src="./index.js"></script>
 </body>
 
 </html>
