@@ -75,6 +75,7 @@ export const ImportOrders = [
         amounts: 5,
         supplierId: 3,
         cost: 175000000,
+        comment:"",
         status: "Confirmed",
         create_at: "2026-05-20",
         create_by: "Admin",
@@ -87,6 +88,7 @@ export const ImportOrders = [
         amounts: 3,
         supplierId: 2,
         cost: 175000000,
+        comment:"",
         status: "Draft",
         create_at: "2026-05-20",
         create_by: "Admin",
@@ -154,4 +156,8 @@ if (!localStorage.getItem("ImportOrders")) {
 
 if (!localStorage.getItem("Suppliers")) {
     localStorage.setItem("Suppliers",JSON.stringify(Suppliers));
+}
+
+if(!localStorage.getItem("Products")){
+    localStorage.setItem("Products",JSON.stringify(Products));
 }

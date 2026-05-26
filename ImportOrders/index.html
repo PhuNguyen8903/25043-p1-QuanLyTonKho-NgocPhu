@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đơn Mua Hàng</title>
     <link rel="stylesheet" href="./style.css">
+    <script type="module" src="../js/mock-data.js"></script>
+    <script src="../js/main.js"></script>
 </head>
 
 <body>
-
     <div class="dashboard">
         <aside class="sidebar">
             <div class="sidebar-top">
@@ -23,7 +24,7 @@
                     <a href="./" class="nav-item active">
                         Đơn mua hàng
                     </a>
-                    <a href="../index.html" class="nav-item">
+                    <a href="#" class="nav-item">
                         Đơn bán hàng
                     </a>
                     <a href="#" class="nav-item">
@@ -49,7 +50,7 @@
                 </div>
                 <div class="user-box">
                     <div class="user-info">
-                        <span class="user-name">Admin</span>
+                        <span class="user-name"></span>
                     </div>
                     <button class="logout-btn">
                         Logout
@@ -64,32 +65,28 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label>Nhà cung cấp</label required>
-                            <select>
+                            <select id="Supplier-options">
                                 <option value="">
                                     Chọn nhà cung cấp
                                 </option>
                                 <option>
-                                    Samsung VN
-                                </option>
-                                <option>
-                                    Apple VN
                                 </option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label>Nhân viên phụ trách</label>
-                            <input type="text" placeholder="Nhập tên nhân viên" required>
+                            <input class="employee" type="text" placeholder="Nhập tên nhân viên" required>
                         </div>
 
                         <div class="form-group">
                             <label>Ngày mua hàng</label>
-                            <input type="date" required>
+                            <input class="date-input" type="date" required>
                         </div>
 
                         <div class="form-group full-width">
                             <label>Ghi chú</label>
-                            <textarea placeholder="Nhập ghi chú..."></textarea>
+                            <textarea class="note-input" placeholder="Nhập ghi chú..."></textarea>
                         </div>
                     </div>
                 </section>
@@ -117,28 +114,7 @@
                                 </thead>
                                 <tbody id="product-table-body">
                                     <tr>
-                                        <td>
-                                            <select>
-                                                <option>SP001</option>
-                                            </select>
-                                        </td>
-                                        <td class="product-name">
-                                            Dell XPS 15
-                                        </td>
-                                        <td>
-                                            <input type="number" value="1" min="1">
-                                        </td>
-                                        <td>
-                                            <input type="number" value="25000000">
-                                        </td>
-                                        <td class="total-price">
-                                            25,000,000đ
-                                        </td>
-                                        <td>
-                                            <button class="delete-btn">
-                                                Xóa
-                                            </button>
-                                        </td>
+
                                     </tr>
                                 </tbody>
                             </table>
@@ -148,7 +124,7 @@
                     <aside class="checkout-sidebar">
                         <div class="summary-card">
                             <span>Tổng tiền đơn hàng</span>
-                            <h2>25,000,000đ</h2>
+                            <h2 id="total-price">0đ</h2>
                         </div>
                         <div class="action-card">
                             <button class="draft-btn">
@@ -169,5 +145,6 @@
             </div>
         </main>
     </div>
+    <script type="module" src="./index.js"></script>
 </body>
 </html>

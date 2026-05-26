@@ -7,13 +7,12 @@ if (!localStorage.getItem('Users')) {
 
 //handle for login function
 document.getElementById('input-form').addEventListener('submit', function (e) {
-        e.preventDefault();
+        e.preventDefault();  // ngan viecc tai lai trang
         const userName = document.getElementById('Username').value; // lay tai khoan va mat khau
-        const passWord = document.getElementById('Password').value;
+        const passWord = document.getElementById('Password').value; 
 
         // lay user trong mock-data
         const storageAccounts = JSON.parse(localStorage.getItem('Users')) || [];
-        console.log('storageAccounts:', storageAccounts);
         //so sanh 
         const account = storageAccounts.find(a => a.Username === userName && a.password === passWord);
 
