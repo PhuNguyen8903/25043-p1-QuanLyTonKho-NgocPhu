@@ -16,10 +16,10 @@ export const Products = [
         id: 1,
         name: "Laptop Dell XPS 15",
         price: 35000000,
-        unit: "Chiếc",
         amounts: 15,
         create_at: "2026-05-20",
-        create_by: "Admin"
+        create_by: "Admin",
+        stock: 10
     },
 
     {
@@ -29,7 +29,8 @@ export const Products = [
         unit: "Chiếc",
         amounts: 10,
         create_at: "2026-05-20",
-        create_by: "Admin"
+        create_by: "Admin",
+        stock: 10
     },
 
     {
@@ -39,7 +40,8 @@ export const Products = [
         unit: "Ổ",
         amounts: 30,
         create_at: "2026-05-20",
-        create_by: "warehouse01"
+        create_by: "warehouse01",
+        stock: 10
     }
 ];
 

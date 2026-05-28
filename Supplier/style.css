@@ -1,0 +1,283 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#f4f7fb;
+    color:#1e293b;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.dashboard{
+    display:flex;
+    min-height:100vh;
+    background:#f5f7fb;
+}
+
+
+.sidebar{
+    width:16rem;
+    background:#ffffff;
+    border-right:0.0625rem solid #e2e8f0;
+    padding:1rem 1rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    height:90vh;
+}
+
+.sidebar-top{
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+    text-decoration:none;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+    color:#0f172a;
+    font-size:1rem;
+    font-weight:bold;
+}
+
+.logo{
+    width:3.5rem;
+    height:3.5rem;
+    border-radius:0.75rem;
+    object-fit:cover;
+    
+}
+
+.logo-link{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* NAV */
+
+.nav-links{
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+}
+.nav-item{
+    padding:0.95rem 1rem;
+    border-radius:12px;
+    text-decoration:none;
+    color:#475569;
+    font-size:1rem;
+    font-weight:500;
+    transition:0.25s;
+}
+
+.nav-item:hover{
+    background:#eef2ff;
+    color:#4f46e5;
+}
+.nav-item.active{
+    background:#2563eb;
+    color:white;
+    font-weight:bold;
+}
+
+/* MAIN */
+
+.main-content{
+    flex:1;
+    padding:2rem 2.5rem;
+}
+/* TOPBAR */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:2rem;
+}
+
+.topbar h1{
+    font-size:2.5rem;
+    margin-bottom:0.4rem;
+    color:#111827;
+}
+
+.topbar p{
+    color:#6b7280;
+    font-size:1rem;
+}
+
+.user-box{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+}
+
+.user-name{
+    font-size:1.1rem;
+    font-weight:bold;
+}
+
+.logout-btn{
+    padding:0.8rem 1.3rem;
+    border:none;
+    border-radius:12px;
+    background:#ef4444;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.logout-btn:hover{
+    background:#dc2626;
+}
+
+/* ACTION BAR */
+
+.action-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:2rem;
+    gap:1rem;
+}
+
+.search-group{
+    display:flex;
+    gap:1rem;
+    flex-wrap:wrap;
+}
+
+.search-group input{
+    width:240px;
+    padding:0.9rem 1rem;
+    border:1px solid #dbe2ea;
+    border-radius:12px;
+    outline:none;
+    background:white;
+    font-size:0.95rem;
+}
+
+.search-group input:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,0.1);
+}
+
+#search-btn{
+    padding:0.9rem 1.5rem;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+#search-btn:hover{
+    background:#1d4ed8;
+}
+
+.create-btn{
+    padding:0.95rem 1.5rem;
+    border:none;
+    border-radius:12px;
+    background:#10b981;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.create-btn:hover{
+    background:#059669;
+}
+
+/* CARD */
+
+.card{
+    background:white;
+    border-radius:24px;
+    padding:1.8rem;
+    box-shadow:0 4px 20px rgba(0,0,0,0.05);
+}
+
+/* TABLE */
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+.data-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.data-table thead{
+    background:#f3f4f6;
+}
+
+.data-table th{
+    text-align:left;
+    padding:1rem;
+    color:#374151;
+    font-size:0.95rem;
+}
+
+.data-table td{
+    padding:1rem;
+    border-bottom:1px solid #f1f5f9;
+    font-size:0.96rem;
+}
+
+.data-table tbody tr{
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.data-table tbody tr:hover{
+    background:#f8fafc;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .main-content{
+        margin-left:0;
+        padding:1.2rem;
+    }
+
+    .topbar{
+        flex-direction:column;
+        gap:1rem;
+    }
+
+    .action-bar{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .search-group{
+        flex-direction:column;
+    }
+
+    .search-group input{
+        width:100%;
+    }
+
+    #search-btn,
+    .create-btn{
+        width:100%;
+    }
+}

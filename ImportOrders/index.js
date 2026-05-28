@@ -54,7 +54,6 @@ const totalElement = document.getElementById("total-price");
 const prodctTb = document.getElementById('product-table-body');
 
 function renderProduct() {
-
     const isReadonly = currentOrder && (currentOrder.status === "Confirmed" || currentOrder.status === "Imported");
     tableBody.innerHTML = "";
     orderProducts.forEach((product, index) => {
@@ -118,14 +117,12 @@ addBtn.addEventListener('click', () => {
 })
 
 window.changeProduct = function (index, productId) {
-
     const selectedProduct = products.find(product => product.id == productId);
     if (!selectedProduct)
         return;
     orderProducts[index].id = selectedProduct.id;
     orderProducts[index].name = selectedProduct.name;
     orderProducts[index].price = selectedProduct.price;
-
     renderProduct();
 }
 
@@ -169,14 +166,15 @@ function generateOrderid() {
 
 }
 
+
 const draftBtn = document.querySelector(".draft-btn");
 const confirmBtn = document.querySelector(".confirm-btn");
 const iconfirmBtn = document.querySelector(".import-btn");
 const backToms = document.querySelector(".secondary-btn");
 const importOrder = JSON.parse(localStorage.getItem("ImportOrders")) || [];
 
-let currentOrder = importOrder.find(order => order.Id == orderId);
 
+let currentOrder = importOrder.find(order => order.Id == orderId);
 if(currentOrder){
     select.value = currentOrder.supplierId;
     document.querySelector(".employee").value = currentOrder.create_by;
@@ -272,8 +270,43 @@ confirmBtn.addEventListener('click', (e) => {
     renderProduct();
     alert("Xác nhận đơn hàng thành công");
 });
-//nut xac nhan nhap kho
 
+
+//nut xac nhan nhap kho
+iconfirmBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (!currentOrder) {
+        alert("Không tìm thấy đơn hàng");
+        return;
+    }
+    // chỉ import khi đã confirm
+    if (currentOrder.status !== "Confirmed") {
+        alert("Chỉ nhập kho đơn đã xác nhận");
+        return;
+    }
+
+    // cộng tồn kho
+    currentOrder.products.forEach(orderItem => {
+
+        const product = products.find(item => item.id == orderItem.id);
+        if (product){
+            product.stock += orderItem.amounts;
+        }
+    });
+
+    // cập nhật trạng thái
+    currentOrder.status = "Imported";
+
+    // lưu lại vào product
+    localStorage.setItem("Products",JSON.stringify(products));
+
+    // lưu lại trạng thái
+    localStorage.setItem("ImportOrders", JSON.stringify(importOrder));
+    lockform();
+    renderProduct();
+    alert("Nhập kho thành công");
+});
 //nut quay lai
 backToms.addEventListener('click', () => {
     window.location.href = "../";
