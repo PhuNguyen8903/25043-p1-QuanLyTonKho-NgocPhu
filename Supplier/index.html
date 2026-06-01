@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sản phẩm</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="../js/mock-data.js"></script>
+</head>
+
+<body>
+    <div id="global-header"></div>
+    <div class="dashboard">
+        <div id="global-sidebar"></div>
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>Danh sách nhà cung cấp</h1>
+                    <p>Quản lý thông tin nhà cung cấp</p>
+                </div>
+                <div class="user-menu">
+                    <button class="user-avatar" id="userAvatar">
+                        👤
+                    </button>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="./profile/" class="dropdown-item userName"></a>
+                        <button class="dropdown-item logout-item">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </header>
+            <div class="page-content">
+                <section class="action-bar">
+                    <div class="search-group">
+                        <input type="text" id="search-id" placeholder="Tìm mã nhà cung cấp...">
+                        <input type="text" id="search-name" placeholder="Tìm tên nhà cung cấp...">
+                        <button id="search-btn">
+                            Tìm kiếm
+                        </button>
+                    </div>
+                    <button class="create-btn">
+                        Tạo mới
+                    </button>
+                </section>
+                <section class="card">
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã</th>
+                                    <th>Tên nhà cung cấp</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Địa chỉ</th>
+                                </tr>
+                            </thead>
+                            <tbody id="supplier-list">
+                                <tr>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <div id="global-footer"></div>
+    <script src="../js/main.js"></script>
+    <script src="./supplier.js"></script>
+</body>
+
+</html>

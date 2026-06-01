@@ -16,10 +16,10 @@ export const Products = [
         id: 1,
         name: "Laptop Dell XPS 15",
         price: 35000000,
-        unit: "Chiếc",
         amounts: 15,
         create_at: "2026-05-20",
-        create_by: "Admin"
+        create_by: "Admin",
+        stock: 10
     },
 
     {
@@ -29,7 +29,8 @@ export const Products = [
         unit: "Chiếc",
         amounts: 10,
         create_at: "2026-05-20",
-        create_by: "Admin"
+        create_by: "Admin",
+        stock: 10
     },
 
     {
@@ -39,7 +40,8 @@ export const Products = [
         unit: "Ổ",
         amounts: 30,
         create_at: "2026-05-20",
-        create_by: "warehouse01"
+        create_by: "warehouse01",
+        stock: 10
     }
 ];
 
@@ -70,11 +72,12 @@ export const Images = [
 
 export const ImportOrders = [
     {
-        Id: "PO001",
+        Id: 1,
         productId: 1,
         amounts: 5,
         supplierId: 3,
         cost: 175000000,
+        comment:"",
         status: "Confirmed",
         create_at: "2026-05-20",
         create_by: "Admin",
@@ -82,11 +85,12 @@ export const ImportOrders = [
         update_by: "Admin"
     },
     {
-        Id: "PO002",
+        Id: 2,
         productId: 2,
         amounts: 3,
         supplierId: 2,
         cost: 175000000,
+        comment:"",
         status: "Draft",
         create_at: "2026-05-20",
         create_by: "Admin",
@@ -99,7 +103,7 @@ export const ImportOrders = [
 
 export const ExportOrders = [
     {
-        Id: "EX001",
+        Id: 1,
         productId: 1,
         amount: 2,
         total_price: 70000000,
@@ -154,4 +158,8 @@ if (!localStorage.getItem("ImportOrders")) {
 
 if (!localStorage.getItem("Suppliers")) {
     localStorage.setItem("Suppliers",JSON.stringify(Suppliers));
+}
+
+if(!localStorage.getItem("Products")){
+    localStorage.setItem("Products",JSON.stringify(Products));
 }
