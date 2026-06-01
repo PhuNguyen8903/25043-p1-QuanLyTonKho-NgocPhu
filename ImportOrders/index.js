@@ -1,5 +1,5 @@
 function logout() {
-    const logoutBtn = document.querySelector(".logout-btn");
+    const logoutBtn = document.querySelector(".logout-item");
     logoutBtn.addEventListener("click", () => {
         localStorage.removeItem("currentUser");
         window.location.href = "../login/";
@@ -8,7 +8,7 @@ function logout() {
 logout();
 
 
-const fullName = document.querySelector(".user-name");
+const fullName = document.querySelector(".userName");
 fullName.textContent = currentUser.fullName;
 
 const params = new URLSearchParams(window.location.search);
@@ -163,7 +163,6 @@ function generateOrderid() {
     }
     // lấy id đơn hàng cuối +1 = id đơn mới
     return getId[getId.length - 1].Id + 1;
-
 }
 
 

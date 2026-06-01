@@ -6,41 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMP store</title>
     <link rel="stylesheet" href="./style.css">
-    <script src="./js/main.js"></script>
     <script type="module" src="./js/mock-data.js"></script>
 </head>
 
 <body>
+    <div id="global-header"></div>
     <div class="dashboard">
-        <aside class="sidebar">
-            <div class="sidebar-top">
-                <a class="logohrf" href="./">
-                <div class="brand">
-                    <img src="./assets/images/logo.png" alt="logo" class="logo">
-                    <h2>SMP Store</h2>
-                </div>
-                </a>
-                
-                <nav class="nav-links">
-                    <a href="./ImportOrders/" class="nav-item"> Đơn mua hàng</a>
-                    <a href="./ProductPage/" class="nav-item"> Sản phẩm </a>
-                    <a href="#" class="nav-item"> Nhà cung cấp </a>
-                    <a href="#" class="nav-item"> Tồn kho</a>
-                    <a href="./profile/" class="nav-item"> Profile</a>
-                </nav>
-            </div>
-        </aside>
+        <div id="global-sidebar"></div>
         <main class="main-content">
             <header class="topbar">
                 <div>
-                    <h1>Trang Chính</h1>
-                    <p>Quản lý đơn mua hàng và tồn kho </p>
+                    <h2>Quản lý đơn mua hàng và tồn kho</h2>
                 </div>
-                <div class="user-box">
-                    <div class="user-info">
-                        <span class="user-name"></span>
+                <div class="user-menu">
+                    <button class="user-avatar" id="userAvatar">
+                        👤
+                    </button>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="./profile/" class="dropdown-item userName"></a>
+                        <button class="dropdown-item logout-item">
+                            Logout
+                        </button>
                     </div>
-                    <button class="logout-btn">Logout </button>
                 </div>
             </header>
             <section class="filter-section">
@@ -81,6 +68,8 @@
             </section>
         </main>
     </div>
+    <div id="global-footer"></div>
+    <script src="./js/main.js"></script>
     <script type="module" src="./index.js"></script>
 </body>
 

@@ -1,5 +1,5 @@
 function logout() {
-    const logoutBtn = document.querySelector(".logout-btn");
+    const logoutBtn = document.querySelector(".logout-item");
     logoutBtn.addEventListener("click", () => {
         localStorage.removeItem("currentUser");
         window.location.href = "./login/";
@@ -7,7 +7,7 @@ function logout() {
 }
 logout();
 
-const fName = document.querySelector(".user-name");
+const fName = document.querySelector(".userName");
 fName.textContent = currentUser.fullName;
 
 
@@ -48,9 +48,8 @@ renderOrders(orders);
 
 //tim kiem
 searchBtn.addEventListener("click", () => {
-    const getID = document.getElementById("search-order-id").value
-        .trim()
-        .toLowerCase();
+    const getID = document.getElementById("search-order-id").value 
+        .trim();
     const getSup = document.getElementById("search-order-supplier").value
         .trim()
         .toLowerCase();
@@ -59,8 +58,10 @@ searchBtn.addEventListener("click", () => {
         const supplier = suppliers.find(
             s => s.id === order.supplierId
         );
-        const matchId = order.Id.toLowerCase().includes(getID);
-        const matchSupplier = supplier ? supplier.name.toLowerCase().includes(getSup) : false;
+
+        //id là số => ép san chuỗi
+        const matchId = getID === "" ||String(order.Id).includes(getID);
+        const matchSupplier =  supplier ? supplier.name.toLowerCase().includes(getSup) : false;
         return matchId && matchSupplier;
     });
     renderOrders(filteredOrders);
