@@ -19,7 +19,8 @@ export const Products = [
         amounts: 15,
         create_at: "2026-05-20",
         create_by: "Admin",
-        stock: 10
+        stock: 10,
+        supplierId:1,
     },
 
     {
@@ -30,42 +31,24 @@ export const Products = [
         amounts: 10,
         create_at: "2026-05-20",
         create_by: "Admin",
-        stock: 10
+        stock: 10,
+        supplierId:2,
     },
 
     {
         id: 3,
         name: "Samsung SSD 1TB",
         price: 2800000,
-        unit: "Ổ",
+        unit: "cai",
         amounts: 30,
         create_at: "2026-05-20",
         create_by: "warehouse01",
-        stock: 10
+        stock: 10,
+        supplierId:2,
     }
 ];
 
 
-
-export const Images = [
-    {
-        id: 1,
-        productId: 1,
-        image_body: "../assets/images/dell-xps.png"
-    },
-
-    {
-        id: 2,
-        productId: 2,
-        image_body: "../assets/images/iphone16.png"
-    },
-
-    {
-        id: 3,
-        productId: 3,
-        image_body: "../assets/images/ssd.png"
-    }
-];
 
 
 
@@ -101,18 +84,6 @@ export const ImportOrders = [
 
 
 
-export const ExportOrders = [
-    {
-        Id: 1,
-        productId: 1,
-        amount: 2,
-        total_price: 70000000,
-        status: "Completed",
-        create_at: "2026-05-21",
-        create_by: "warehouse01"
-    }
-];
-
 
 export const Suppliers = [
     {
@@ -138,15 +109,6 @@ export const Suppliers = [
 ];
 
 
-export const ExportOrderDetails = [
-    {
-        Id: 1,
-        exportorderId: "EX001",
-        productId: 1,
-        amount: 2,
-        price: 35000000
-    }
-];
 
 
 if (!localStorage.getItem("ImportOrders")) {

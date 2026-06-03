@@ -17,6 +17,7 @@ const orderId = params.get("Id");
 const userRole = JSON.parse(localStorage.getItem("currentUser"));
 const suppliers = JSON.parse(localStorage.getItem("Suppliers")) || [];
 const select = document.getElementById("Supplier-options");
+
 function parseSup(optionList) {
     select.innerHTML = `
         <option value="">

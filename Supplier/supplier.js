@@ -1,6 +1,6 @@
 const createRd = document.querySelector(".create-btn");
 createRd.addEventListener('click',()=>{
-    window.location.href="../supplier/";
+    window.location.href="../SupplierDetail/";
 })
 
 const userName = document.querySelector(".userName");
@@ -12,7 +12,7 @@ function renderProducts(supplierList){
     tbody.innerHTML = "";
     supplierList.forEach(supplier => {
         tbody.innerHTML += `
-            <tr>
+            <tr data-id = "${supplier.id}">
                 <td>${supplier.id}</td>
                 <td>${supplier.name}</td>
                 <td>${supplier.pn}</td>
@@ -23,3 +23,15 @@ function renderProducts(supplierList){
 }
 renderProducts(getSup)
 
+
+function productRedirec() {
+    const body = document.getElementById("supplier-list")
+    body.addEventListener('click',(e)=>{
+        const getrow = e.target.closest("tr");
+        if(getrow){
+            const supplierId = getrow.dataset.id
+            window.location.href =`../SupplierDetail/?id=${supplierId}`
+        }
+    });
+}
+productRedirec();

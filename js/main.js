@@ -54,8 +54,14 @@ function renderSidebar() {
                     <a href="/ProductPage/" class="nav-item">
                         Sản phẩm
                     </a>
+                    <a href="/ProductDetail/" class="nav-item">
+                        Chi tiết sản phẩm
+                    </a>
                     <a href="/Supplier/" class="nav-item">
                         Nhà cung cấp
+                    </a>
+                    <a href="/SupplierDetail/" class="nav-item">
+                        Chi tiết nhà cung cấp
                     </a>
                     <a href="/Inventory/" class="nav-item">
                         Tồn kho
