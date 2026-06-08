@@ -35,3 +35,18 @@ function productRedirec() {
     });
 }
 productRedirec();
+
+
+const search = document.getElementById("search");
+const btnSearch = document.getElementById("search-btn");
+
+btnSearch.addEventListener('click',searching);
+
+function searching() {
+    const keyValue = search.value.trim().toLowerCase();
+    const result = getSup.filter(supplier =>
+      supplier.name.toLowerCase().includes(keyValue)||
+      String(supplier.id).toLowerCase().includes(keyValue)  
+    );
+    renderProducts(result);
+}

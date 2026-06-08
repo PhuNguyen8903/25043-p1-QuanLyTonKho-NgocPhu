@@ -76,6 +76,10 @@ html{
     border-radius: 0.8rem;
 }
 
+.brand h2{
+    font-size: 1.4rem;
+}
+
 
 .nav-links{
     display: flex;

@@ -16,7 +16,7 @@ export const Products = [
         id: 1,
         name: "Laptop Dell XPS 15",
         price: 35000000,
-        amounts: 15,
+        unit: "cái",
         create_at: "2026-05-20",
         create_by: "Admin",
         stock: 10,
@@ -28,7 +28,6 @@ export const Products = [
         name: "iPhone 16 Pro Max",
         price: 42000000,
         unit: "Chiếc",
-        amounts: 10,
         create_at: "2026-05-20",
         create_by: "Admin",
         stock: 10,
@@ -40,7 +39,6 @@ export const Products = [
         name: "Samsung SSD 1TB",
         price: 2800000,
         unit: "cai",
-        amounts: 30,
         create_at: "2026-05-20",
         create_by: "warehouse01",
         stock: 10,
@@ -50,13 +48,10 @@ export const Products = [
 
 
 
-
-
-
 export const ImportOrders = [
     {
         Id: 1,
-        productId: 1,
+        products: [{productId:1,amounts:5 ,price: 1200}],
         amounts: 5,
         supplierId: 3,
         cost: 175000000,
@@ -69,7 +64,7 @@ export const ImportOrders = [
     },
     {
         Id: 2,
-        productId: 2,
+        products: [{productId:2,amounts:3,price: 10000}],
         amounts: 3,
         supplierId: 2,
         cost: 175000000,

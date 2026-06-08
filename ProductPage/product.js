@@ -49,3 +49,15 @@ function productRedirec() {
     });
 }
 productRedirec();
+
+
+let searchKey = document.getElementById("search-box");
+const searchbtn = document.getElementById("search-btn");
+
+searchbtn.addEventListener('click',searchProducts);
+function searchProducts() {
+    const getKeyword = searchKey.value.toLowerCase().trim();
+    const result = products.filter(product => product.name.toLowerCase().includes(getKeyword)||
+                        String(product.id).includes(getKeyword));
+    renderProducts(result);
+}

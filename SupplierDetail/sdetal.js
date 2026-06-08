@@ -36,7 +36,6 @@ function saveBtn() {
         }
 
         const phoneRegex = /^0\d{9}$/;
-
         if (!phoneRegex.test(supplierPhone)) {
             alert("Số điện thoại không hợp lệ");
             return;
