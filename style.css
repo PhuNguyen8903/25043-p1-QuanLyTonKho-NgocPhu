@@ -300,7 +300,7 @@ tbody tr:hover{
     font-size: 0.95rem;
 }
 
-@media screen and (max-width: 64rem){
+@media screen and (max-width: 900px){
     .dashboard{
         flex-direction: column;
     }
@@ -323,7 +323,7 @@ tbody tr:hover{
     }
 }
 
-@media screen and (max-width: 48rem){
+@media screen and (max-width: 600px){
 
     html{
         font-size: 14px;

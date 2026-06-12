@@ -230,10 +230,20 @@ draftBtn.addEventListener('click', (e) => {
         comment,
         status: "Draft",
     }
-    importOrder.push(order);
-    localStorage.setItem("ImportOrders", JSON.stringify(importOrder))
-    currentOrder = order;
-    alert("Lưu đơn hàng thành công");
+    
+    if(currentOrder){
+        currentOrder = order;
+        const currentIndex = importOrder.findIndex(oder => oder.Id === currentOrder.Id);
+        importOrder[currentIndex] = currentOrder;
+        localStorage.setItem("ImportOrders", JSON.stringify(importOrder))
+        alert("cập nhật đơn hàng thành công");
+    }
+    else{
+        //lưu đơn mới
+        importOrder.push(order);
+        localStorage.setItem("ImportOrders", JSON.stringify(importOrder))
+        alert("Lưu đơn hàng thành công");
+    }
 })
 
 

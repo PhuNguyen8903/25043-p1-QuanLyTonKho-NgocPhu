@@ -425,7 +425,7 @@ body {
 }
 
 
-@media screen and (max-width: 56.25rem) {
+@media screen and (max-width: 900px) {
 
     .dashboard {
         flex-direction: column;
@@ -472,7 +472,7 @@ body {
     }
 }
 
-@media screen and (max-width: 30rem) {
+@media screen and (max-width: 600px) {
 
     html {
         font-size: 14px;
