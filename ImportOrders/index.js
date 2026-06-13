@@ -277,6 +277,7 @@ draftBtn.addEventListener('click', () => {
         currentOrder = updatedOrder;
         localStorage.setItem("ImportOrders", JSON.stringify(importOrder));
         alert("Cập nhật đơn hàng thành công");
+        window.location.href = "../";
     }
     else{
         const order = {
@@ -295,6 +296,7 @@ draftBtn.addEventListener('click', () => {
         localStorage.setItem("ImportOrders", JSON.stringify(importOrder))
         currentOrder = order;
         alert("Lưu đơn hàng thành công");
+        window.location.href = "../"
     }
     updateButtonStates();
 })
