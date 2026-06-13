@@ -1,7 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const supplierId = Number(params.get("id"));
 
-
 const suppliers = JSON.parse(localStorage.getItem("Suppliers")) || [];
 const currentSupplier = suppliers.find(supplier => supplier.id === supplierId);
 const savebtn = document.getElementById("save-btn");
@@ -20,7 +19,7 @@ loadSupplierDetail();
 function saveBtn() {
     savebtn.addEventListener('click', () => {
         const name = document.getElementById("supplier-name").value.trim();
-        const pn = Number(document.getElementById("supplier-phone").value);
+        const pn = document.getElementById("supplier-phone").value.trim();
         const address = document.getElementById("supplier-address").value.trim();
 
         if (!name || !pn || !address) {
@@ -35,8 +34,8 @@ function saveBtn() {
             return;
         }
 
-        const phoneRegex = /^0\d{9}$/;
-        if (!phoneRegex.test(supplierPhone)) {
+        const phoneRegex = /^\d{10}$/;
+        if (!phoneRegex.test(pn)) {
             alert("Số điện thoại không hợp lệ");
             return;
         }

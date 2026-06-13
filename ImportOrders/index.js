@@ -168,7 +168,6 @@ const iconfirmBtn = document.querySelector(".import-btn");
 const backToms = document.querySelector(".secondary-btn");
 const importOrder = JSON.parse(localStorage.getItem("ImportOrders")) || [];
 
-
 let currentOrder = importOrder.find(order => order.Id == orderId);
 if (currentOrder) {
     select.value = currentOrder.supplierId;
@@ -182,10 +181,52 @@ if (currentOrder) {
     }
 }
 
+function updateButtonStates() {
+    if (!currentOrder) {
+        // Chưa lưu lần nào => disable confirm và import
+        confirmBtn.disabled = true;
+        iconfirmBtn.disabled = true;
+        return;
+    }
+ 
+    const status = currentOrder.status;
+ 
+    if (status === "Draft") {
+        // Đã lưu 
+        confirmBtn.disabled = false;
+        iconfirmBtn.disabled = true;
+        draftBtn.disabled = false;
+    } else if (status === "Confirmed") {
+        // Đã xác nhận đơn
+        confirmBtn.disabled = true;
+        iconfirmBtn.disabled = false;
+        draftBtn.disabled = true;
+    } else if (status === "Imported") {
+        // Đã nhập kho
+        confirmBtn.disabled = true;
+        iconfirmBtn.disabled = true;
+        draftBtn.disabled = true;
+    }
+}
+updateButtonStates();
+
+function lockform() {
+
+    document.querySelector(".employee").disabled = true;
+    document.querySelector(".date-input").disabled = true;
+    document.querySelector(".note-input").disabled = true;
+    select.disabled = true;
+    addBtn.disabled = true;
+    updateButtonStates();
+}
+
+
+
+
 
 // lưu lại
-draftBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+draftBtn.addEventListener('click', () => {
+
     //lay gia tri cua bang chung
     const supplierId = select.value;
     const create_by = document.querySelector(".employee").value;
@@ -218,8 +259,27 @@ draftBtn.addEventListener('click', (e) => {
     orderProducts.forEach(item => {
         amounts += item.amounts;
     });
-
-    const order = {
+    
+    if(currentOrder){
+       const updatedOrder = {
+            ...currentOrder,
+            products: [...orderProducts],
+            amounts,
+            supplierId: Number(supplierId),
+            cost,
+            create_by,
+            create_at,
+            comment,
+            status: "Draft",
+        };
+        const currentIndex = importOrder.findIndex(order => order.Id === currentOrder.Id);
+        importOrder[currentIndex] = updatedOrder;
+        currentOrder = updatedOrder;
+        localStorage.setItem("ImportOrders", JSON.stringify(importOrder));
+        alert("Cập nhật đơn hàng thành công");
+    }
+    else{
+        const order = {
         Id: Date.now(),
         products: [...orderProducts],
         amounts,
@@ -229,39 +289,18 @@ draftBtn.addEventListener('click', (e) => {
         create_at,
         comment,
         status: "Draft",
-    }
-    
-    if(currentOrder){
-        currentOrder = order;
-        const currentIndex = importOrder.findIndex(oder => oder.Id === currentOrder.Id);
-        importOrder[currentIndex] = currentOrder;
-        localStorage.setItem("ImportOrders", JSON.stringify(importOrder))
-        alert("cập nhật đơn hàng thành công");
-    }
-    else{
+        }
         //lưu đơn mới
         importOrder.push(order);
         localStorage.setItem("ImportOrders", JSON.stringify(importOrder))
+        currentOrder = order;
         alert("Lưu đơn hàng thành công");
     }
+    updateButtonStates();
 })
 
-
-function lockform() {
-
-    document.querySelector(".employee").disabled = true;
-    document.querySelector(".date-input").disabled = true;
-    document.querySelector(".note-input").disabled = true;
-    select.disabled = true;
-    addBtn.disabled = true;
-    draftBtn.disabled = true;
-    confirmBtn.disabled = true;
-}
-
-
 //nut xac nhan don hang
-confirmBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+confirmBtn.addEventListener('click', () => {
     if (!currentOrder) {
         alert("Không tìm thấy đơn hàng");
         return;
@@ -275,14 +314,13 @@ confirmBtn.addEventListener('click', (e) => {
     localStorage.setItem("ImportOrders", JSON.stringify(importOrder));
     lockform();
     renderProduct();
+    updateButtonStates();
     alert("Xác nhận đơn hàng thành công");
 });
 
 
 //nut xac nhan nhap kho
-iconfirmBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-
+iconfirmBtn.addEventListener("click", () => {
     if (!currentOrder) {
         alert("Không tìm thấy đơn hàng");
         return;
@@ -309,6 +347,7 @@ iconfirmBtn.addEventListener("click", (e) => {
     // lưu lại trạng thái
     localStorage.setItem("ImportOrders", JSON.stringify(importOrder));
     lockform();
+    updateButtonStates();
     renderProduct();
     alert("Nhập kho thành công");
 });
